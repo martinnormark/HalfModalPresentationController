@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0B87D5A1C4B5C3100893F23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B87D591C4B5C3100893F23 /* AppDelegate.swift */; };
+		D0B87D5C1C4B5C3100893F23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B87D5B1C4B5C3100893F23 /* ViewController.swift */; };
+		D0B87D5F1C4B5C3100893F23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B87D5D1C4B5C3100893F23 /* Main.storyboard */; };
+		D0B87D611C4B5C3100893F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B87D601C4B5C3100893F23 /* Assets.xcassets */; };
+		D0B87D641C4B5C3100893F23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B87D621C4B5C3100893F23 /* LaunchScreen.storyboard */; };
+		D0B87D6D1C4B5C9E00893F23 /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B87D6C1C4B5C9E00893F23 /* HalfModalPresentationController.swift */; };
+		D0B87D721C4B61B200893F23 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B87D711C4B61B200893F23 /* ModalViewController.swift */; };
+		D0BAB3F61C5AAE7C00F8D28D /* AppNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BAB3F51C5AAE7C00F8D28D /* AppNavController.swift */; };
+		D0BAB3F81C5AB43400F8D28D /* HalfModalInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BAB3F71C5AB43400F8D28D /* HalfModalInteractiveTransition.swift */; };
+		D0BAB3FA1C5B9F8600F8D28D /* HalfModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BAB3F91C5B9F8600F8D28D /* HalfModalTransitionAnimator.swift */; };
+		D0BAB3FC1C5BB2C000F8D28D /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BAB3FB1C5BB2C000F8D28D /* HalfModalTransitioningDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D0B87D561C4B5C3100893F23 /* HalfModalPresentationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalfModalPresentationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0B87D591C4B5C3100893F23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0B87D5B1C4B5C3100893F23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0B87D5E1C4B5C3100893F23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D0B87D601C4B5C3100893F23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0B87D631C4B5C3100893F23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D0B87D651C4B5C3100893F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0B87D6C1C4B5C9E00893F23 /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HalfModalPresentationController.swift; path = Presentation/HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		D0B87D711C4B61B200893F23 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		D0BAB3F51C5AAE7C00F8D28D /* AppNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavController.swift; sourceTree = "<group>"; };
+		D0BAB3F71C5AB43400F8D28D /* HalfModalInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HalfModalInteractiveTransition.swift; path = Transitioning/HalfModalInteractiveTransition.swift; sourceTree = "<group>"; };
+		D0BAB3F91C5B9F8600F8D28D /* HalfModalTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HalfModalTransitionAnimator.swift; path = Transitioning/HalfModalTransitionAnimator.swift; sourceTree = "<group>"; };
+		D0BAB3FB1C5BB2C000F8D28D /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0B87D531C4B5C3100893F23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D0B87D4D1C4B5C3100893F23 = {
+			isa = PBXGroup;
+			children = (
+				D0B87D581C4B5C3100893F23 /* HalfModalPresentationController */,
+				D0B87D571C4B5C3100893F23 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0B87D571C4B5C3100893F23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0B87D561C4B5C3100893F23 /* HalfModalPresentationController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0B87D581C4B5C3100893F23 /* HalfModalPresentationController */ = {
+			isa = PBXGroup;
+			children = (
+				D0B87D6B1C4B5C7600893F23 /* Presentation */,
+				D0B87D6E1C4B5CE400893F23 /* Transitioning */,
+				D0B87D591C4B5C3100893F23 /* AppDelegate.swift */,
+				D0BAB3F51C5AAE7C00F8D28D /* AppNavController.swift */,
+				D0B87D5B1C4B5C3100893F23 /* ViewController.swift */,
+				D0B87D711C4B61B200893F23 /* ModalViewController.swift */,
+				D0B87D5D1C4B5C3100893F23 /* Main.storyboard */,
+				D0B87D601C4B5C3100893F23 /* Assets.xcassets */,
+				D0B87D621C4B5C3100893F23 /* LaunchScreen.storyboard */,
+				D0B87D651C4B5C3100893F23 /* Info.plist */,
+			);
+			path = HalfModalPresentationController;
+			sourceTree = "<group>";
+		};
+		D0B87D6B1C4B5C7600893F23 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D0B87D6C1C4B5C9E00893F23 /* HalfModalPresentationController.swift */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		D0B87D6E1C4B5CE400893F23 /* Transitioning */ = {
+			isa = PBXGroup;
+			children = (
+				D0BAB3FB1C5BB2C000F8D28D /* HalfModalTransitioningDelegate.swift */,
+				D0BAB3F71C5AB43400F8D28D /* HalfModalInteractiveTransition.swift */,
+				D0BAB3F91C5B9F8600F8D28D /* HalfModalTransitionAnimator.swift */,
+			);
+			name = Transitioning;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D0B87D551C4B5C3100893F23 /* HalfModalPresentationController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0B87D681C4B5C3100893F23 /* Build configuration list for PBXNativeTarget "HalfModalPresentationController" */;
+			buildPhases = (
+				D0B87D521C4B5C3100893F23 /* Sources */,
+				D0B87D531C4B5C3100893F23 /* Frameworks */,
+				D0B87D541C4B5C3100893F23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HalfModalPresentationController;
+			productName = HalfModalPresentationController;
+			productReference = D0B87D561C4B5C3100893F23 /* HalfModalPresentationController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0B87D4E1C4B5C3100893F23 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = martinnormark;
+				TargetAttributes = {
+					D0B87D551C4B5C3100893F23 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = M5NC87P8XY;
+					};
+				};
+			};
+			buildConfigurationList = D0B87D511C4B5C3100893F23 /* Build configuration list for PBXProject "HalfModalPresentationController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0B87D4D1C4B5C3100893F23;
+			productRefGroup = D0B87D571C4B5C3100893F23 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0B87D551C4B5C3100893F23 /* HalfModalPresentationController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0B87D541C4B5C3100893F23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B87D641C4B5C3100893F23 /* LaunchScreen.storyboard in Resources */,
+				D0B87D611C4B5C3100893F23 /* Assets.xcassets in Resources */,
+				D0B87D5F1C4B5C3100893F23 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0B87D521C4B5C3100893F23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B87D5C1C4B5C3100893F23 /* ViewController.swift in Sources */,
+				D0B87D721C4B61B200893F23 /* ModalViewController.swift in Sources */,
+				D0BAB3FC1C5BB2C000F8D28D /* HalfModalTransitioningDelegate.swift in Sources */,
+				D0B87D5A1C4B5C3100893F23 /* AppDelegate.swift in Sources */,
+				D0B87D6D1C4B5C9E00893F23 /* HalfModalPresentationController.swift in Sources */,
+				D0BAB3F61C5AAE7C00F8D28D /* AppNavController.swift in Sources */,
+				D0BAB3FA1C5B9F8600F8D28D /* HalfModalTransitionAnimator.swift in Sources */,
+				D0BAB3F81C5AB43400F8D28D /* HalfModalInteractiveTransition.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D0B87D5D1C4B5C3100893F23 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0B87D5E1C4B5C3100893F23 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D0B87D621C4B5C3100893F23 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0B87D631C4B5C3100893F23 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D0B87D661C4B5C3100893F23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D0B87D671C4B5C3100893F23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0B87D691C4B5C3100893F23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = HalfModalPresentationController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinnormark.HalfModalPresentationController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		D0B87D6A1C4B5C3100893F23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = HalfModalPresentationController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinnormark.HalfModalPresentationController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0B87D511C4B5C3100893F23 /* Build configuration list for PBXProject "HalfModalPresentationController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0B87D661C4B5C3100893F23 /* Debug */,
+				D0B87D671C4B5C3100893F23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0B87D681C4B5C3100893F23 /* Build configuration list for PBXNativeTarget "HalfModalPresentationController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0B87D691C4B5C3100893F23 /* Debug */,
+				D0B87D6A1C4B5C3100893F23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0B87D4E1C4B5C3100893F23 /* Project object */;
+}
