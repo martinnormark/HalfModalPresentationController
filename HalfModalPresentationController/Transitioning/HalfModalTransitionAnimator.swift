@@ -17,8 +17,6 @@ class HalfModalTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
     }
     
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        print("animating begin...")
-        
         let _ = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
         let from = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
         
@@ -33,10 +31,6 @@ class HalfModalTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
             
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         }
-    }
-    
-    func animationEnded(transitionCompleted: Bool) {
-        print("ended")
     }
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
