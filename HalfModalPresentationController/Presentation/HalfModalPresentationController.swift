@@ -46,7 +46,8 @@ class HalfModalPresentationController : UIPresentationController {
                 if let navController = self.presentedViewController as? UINavigationController {
                     self.isMaximized = true
                     
-                    navController.setNeedsStatusBarAppearanceUpdate()
+                    // Disabled until rdar://21961293 is fixed in iOS 9.3
+                    //navController.setNeedsStatusBarAppearanceUpdate()
                     
                     // Force the navigation bar to update its size
                     navController.navigationBarHidden = true
