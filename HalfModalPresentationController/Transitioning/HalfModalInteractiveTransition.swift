@@ -22,11 +22,11 @@ class HalfModalInteractiveTransition: UIPercentDrivenInteractiveTransition {
         
         super.init()
         
-        self.panGestureRecognizer.addTarget(self, action: "onPan:")
+        self.panGestureRecognizer.addTarget(self, action: #selector(onPan))
         view.addGestureRecognizer(panGestureRecognizer)
     }
     
-    override func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning) {
+    override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         super.startInteractiveTransition(transitionContext)
         
         print("start interactive")
@@ -40,16 +40,16 @@ class HalfModalInteractiveTransition: UIPercentDrivenInteractiveTransition {
     }
     
     func onPan(pan: UIPanGestureRecognizer) -> Void {
-        let translation = pan.translationInView(pan.view?.superview)
+        let translation = pan.translation(in: pan.view?.superview)
         
         switch pan.state {
-        case .Began:
-            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        case .began:
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
             
             break
             
-        case .Changed:
-            let screenHeight = UIScreen.mainScreen().bounds.size.height - 50
+        case .changed:
+            let screenHeight = UIScreen.main.bounds.size.height - 50
             let dragAmount = screenHeight
             let threshold: Float = 0.2
             var percent: Float = Float(translation.y) / Float(dragAmount)
@@ -57,20 +57,20 @@ class HalfModalInteractiveTransition: UIPercentDrivenInteractiveTransition {
             percent = fmaxf(percent, 0.0)
             percent = fminf(percent, 1.0)
             
-            updateInteractiveTransition(CGFloat(percent))
+            update(CGFloat(percent))
             
             shouldComplete = percent > threshold
             
             break
             
-        case .Ended, .Cancelled:
-            if pan.state == .Cancelled || !shouldComplete {
-                cancelInteractiveTransition()
+        case .ended, .cancelled:
+            if pan.state == .cancelled || !shouldComplete {
+                cancel()
                 
                 print("cancel transition")
             }
             else {
-                finishInteractiveTransition()
+                finish()
                 
                 print("finished transition")
             }
@@ -78,7 +78,7 @@ class HalfModalInteractiveTransition: UIPercentDrivenInteractiveTransition {
             break
             
         default:
-            cancelInteractiveTransition()
+            cancel()
             
             break
         }
