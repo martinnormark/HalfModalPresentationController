@@ -16,11 +16,11 @@ class HalfModalTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         self.type = type
     }
     
-    @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let _ = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
-        let from = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
+    @objc func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let _ = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
+        let from = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
         
-        UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: { () -> Void in
             
             from!.view.frame.origin.y = 800
             
@@ -29,11 +29,11 @@ class HalfModalTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         }) { (completed) -> Void in
             print("animate completed")
             
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
 }

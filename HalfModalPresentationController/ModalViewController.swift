@@ -18,6 +18,6 @@ class ModalViewController: UIViewController, HalfModalPresentable {
             delegate.interactiveDismiss = false
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

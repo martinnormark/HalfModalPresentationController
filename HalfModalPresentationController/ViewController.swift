@@ -21,14 +21,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
-        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: segue.destinationViewController)
+        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: segue.destination)
         
-        segue.destinationViewController.modalPresentationStyle = .Custom
-        segue.destinationViewController.transitioningDelegate = halfModalTransitioningDelegate
+        segue.destination.modalPresentationStyle = .custom
+        segue.destination.transitioningDelegate = self.halfModalTransitioningDelegate
     }
+
 }
 

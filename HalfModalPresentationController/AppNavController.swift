@@ -9,8 +9,7 @@
 import UIKit
 
 class AppNavController: UINavigationController, HalfModalPresentable {
-    // // Disabled until rdar://21961293 is fixed in iOS 9.3
-    /*override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return isHalfModalMaximized() ? .Default : .LightContent
-    }*/
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return isHalfModalMaximized() ? .default : .lightContent
+    }
 }

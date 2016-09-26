@@ -20,13 +20,13 @@ class HalfModalPresentationController : UIPresentationController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: containerView!.bounds.width, height: containerView!.bounds.height))
         
         // Blur Effect
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         view.addSubview(blurEffectView)
         
         // Vibrancy Effect
-        let vibrancyEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
         let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
         vibrancyEffectView.frame = view.bounds
         
@@ -39,50 +39,49 @@ class HalfModalPresentationController : UIPresentationController {
     }
     
     func adjustToFullScreen() {
-        if let presentedView = presentedView(), containerView = self.containerView {
-            UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
+        if let presentedView = presentedView, let containerView = self.containerView {
+            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { () -> Void in
                 presentedView.frame = containerView.frame
                 
                 if let navController = self.presentedViewController as? UINavigationController {
                     self.isMaximized = true
                     
-                    // Disabled until rdar://21961293 is fixed in iOS 9.3
-                    //navController.setNeedsStatusBarAppearanceUpdate()
+                    navController.setNeedsStatusBarAppearanceUpdate()
                     
                     // Force the navigation bar to update its size
-                    navController.navigationBarHidden = true
-                    navController.navigationBarHidden = false
+                    navController.isNavigationBarHidden = true
+                    navController.isNavigationBarHidden = false
                 }
                 }, completion: nil)
         }
     }
     
-    override func frameOfPresentedViewInContainerView() -> CGRect {
+    override var frameOfPresentedViewInContainerView: CGRect {
         return CGRect(x: 0, y: containerView!.bounds.height / 2, width: containerView!.bounds.width, height: containerView!.bounds.height / 2)
     }
     
     override func presentationTransitionWillBegin() {
         let dimmedView = dimmingView
         
-        if let containerView = self.containerView, coordinator = presentingViewController.transitionCoordinator() {
+        if let containerView = self.containerView, let coordinator = presentingViewController.transitionCoordinator {
             
             dimmedView.alpha = 0
             containerView.addSubview(dimmedView)
             dimmedView.addSubview(presentedViewController.view)
             
-            coordinator.animateAlongsideTransition({ (context) -> Void in
+            coordinator.animate(alongsideTransition: { (context) -> Void in
                 dimmedView.alpha = 1
-                self.presentingViewController.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
+                self.presentingViewController.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }, completion: nil)
         }
     }
     
     override func dismissalTransitionWillBegin() {
-        if let coordinator = presentingViewController.transitionCoordinator() {
+        if let coordinator = presentingViewController.transitionCoordinator {
             
-            coordinator.animateAlongsideTransition({ (context) -> Void in
+            coordinator.animate(alongsideTransition: { (context) -> Void in
                 self.dimmingView.alpha = 0
-                self.presentingViewController.view.transform = CGAffineTransformIdentity
+                self.presentingViewController.view.transform = CGAffineTransform.identity
             }, completion: { (completed) -> Void in
                 print("done dismiss animation")
             })
@@ -90,7 +89,7 @@ class HalfModalPresentationController : UIPresentationController {
         }
     }
     
-    override func dismissalTransitionDidEnd(completed: Bool) {
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
         print("dismissal did end: \(completed)")
         
         if completed {
