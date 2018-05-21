@@ -73,10 +73,10 @@ class HalfModalPresentationController : UIPresentationController {
             break
         case .ended:
             if direction < 0 {
-                adjustToFullScreen()
+                changeScale(to: .adjustedOnce)
             } else {
                 if state == .adjustedOnce {
-                    shrinkToHalfScreen()
+                    changeScale(to: .normal)
                 } else {
                     presentedViewController.dismiss(animated: true, completion: nil)
                 }
@@ -90,10 +90,16 @@ class HalfModalPresentationController : UIPresentationController {
         }
     }
     
-    func adjustToFullScreen() {
+    func changeScale(to state: ModalScaleState) {
         if let presentedView = presentedView, let containerView = self.containerView {
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { () -> Void in
                 presentedView.frame = containerView.frame
+                let containerFrame = containerView.frame
+                let halfFrame = CGRect(origin: CGPoint(x: 0, y: containerFrame.height / 2),
+                                       size: CGSize(width: containerFrame.width, height: containerFrame.height / 2))
+                let frame = state == .adjustedOnce ? containerView.frame : halfFrame
+                
+                presentedView.frame = frame
                 
                 if let navController = self.presentedViewController as? UINavigationController {
                     self.isMaximized = true
@@ -105,28 +111,7 @@ class HalfModalPresentationController : UIPresentationController {
                     navController.isNavigationBarHidden = false
                 }
             }, completion: { (isFinished) in
-                self.state = .adjustedOnce
-            })
-        }
-    }
-    
-    func shrinkToHalfScreen() {
-        if let presentedView = presentedView, let containerView = self.containerView {
-            UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { () -> Void in
-                let frame = containerView.frame
-                presentedView.frame = CGRect(origin: CGPoint(x: 0, y: frame.height / 2), size: CGSize(width: frame.width, height: frame.height / 2))
-                
-                if let navController = self.presentedViewController as? UINavigationController {
-                    self.isMaximized = true
-                    
-                    navController.setNeedsStatusBarAppearanceUpdate()
-                    
-                    // Force the navigation bar to update its size
-                    navController.isNavigationBarHidden = true
-                    navController.isNavigationBarHidden = false
-                }
-            }, completion: { (isFinished) in
-                self.state = .normal
+                self.state = state
             })
         }
     }
@@ -181,7 +166,7 @@ protocol HalfModalPresentable { }
 extension HalfModalPresentable where Self: UIViewController {
     func maximizeToFullScreen() -> Void {
         if let presetation = navigationController?.presentationController as? HalfModalPresentationController {
-            presetation.adjustToFullScreen()
+            presetation.changeScale(to: .adjustedOnce)
         }
     }
 }
