@@ -58,15 +58,15 @@ class HalfModalPresentationController : UIPresentationController {
         
         switch pan.state {
         case .began:
-            presentedView!.frame = containerView!.frame
+            presentedView!.frame.size.height = containerView!.frame.height
         case .changed:
             let velocity = pan.velocity(in: pan.view?.superview)
             print(velocity.y)
             switch state {
             case .normal:
-                presentedView?.frame.origin.y = endPoint.y + containerView!.frame.height / 2
+                presentedView!.frame.origin.y = endPoint.y + containerView!.frame.height / 2
             case .adjustedOnce:
-                presentedView?.frame.origin.y = endPoint.y
+                presentedView!.frame.origin.y = endPoint.y
             }
             direction = velocity.y
             
