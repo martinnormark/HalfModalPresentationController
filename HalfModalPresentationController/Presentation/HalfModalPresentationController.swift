@@ -8,10 +8,18 @@
 
 import UIKit
 
+enum ModalScaleState {
+    case adjustedOnce
+    case normal
+}
+
 class HalfModalPresentationController : UIPresentationController {
     var isMaximized: Bool = false
     
     var _dimmingView: UIView?
+    var panGestureRecognizer: UIPanGestureRecognizer
+    var direction: CGFloat = 0
+    var state: ModalScaleState = .normal
     var dimmingView: UIView {
         if let dimmedView = _dimmingView {
             return dimmedView
@@ -38,10 +46,60 @@ class HalfModalPresentationController : UIPresentationController {
         return view
     }
     
-    func adjustToFullScreen() {
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        self.panGestureRecognizer = UIPanGestureRecognizer()
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+        panGestureRecognizer.addTarget(self, action: #selector(onPan(pan:)))
+        presentedViewController.view.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    func onPan(pan: UIPanGestureRecognizer) -> Void {
+        let endPoint = pan.translation(in: pan.view?.superview)
+        
+        switch pan.state {
+        case .began:
+            presentedView!.frame.size.height = containerView!.frame.height
+        case .changed:
+            let velocity = pan.velocity(in: pan.view?.superview)
+            print(velocity.y)
+            switch state {
+            case .normal:
+                presentedView!.frame.origin.y = endPoint.y + containerView!.frame.height / 2
+            case .adjustedOnce:
+                presentedView!.frame.origin.y = endPoint.y
+            }
+            direction = velocity.y
+            
+            break
+        case .ended:
+            if direction < 0 {
+                changeScale(to: .adjustedOnce)
+            } else {
+                if state == .adjustedOnce {
+                    changeScale(to: .normal)
+                } else {
+                    presentedViewController.dismiss(animated: true, completion: nil)
+                }
+            }
+            
+            print("finished transition")
+            
+            break
+        default:
+            break
+        }
+    }
+    
+    func changeScale(to state: ModalScaleState) {
         if let presentedView = presentedView, let containerView = self.containerView {
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { () -> Void in
                 presentedView.frame = containerView.frame
+                let containerFrame = containerView.frame
+                let halfFrame = CGRect(origin: CGPoint(x: 0, y: containerFrame.height / 2),
+                                       size: CGSize(width: containerFrame.width, height: containerFrame.height / 2))
+                let frame = state == .adjustedOnce ? containerView.frame : halfFrame
+                
+                presentedView.frame = frame
                 
                 if let navController = self.presentedViewController as? UINavigationController {
                     self.isMaximized = true
@@ -52,7 +110,9 @@ class HalfModalPresentationController : UIPresentationController {
                     navController.isNavigationBarHidden = true
                     navController.isNavigationBarHidden = false
                 }
-                }, completion: nil)
+            }, completion: { (isFinished) in
+                self.state = state
+            })
         }
     }
     
@@ -106,7 +166,7 @@ protocol HalfModalPresentable { }
 extension HalfModalPresentable where Self: UIViewController {
     func maximizeToFullScreen() -> Void {
         if let presetation = navigationController?.presentationController as? HalfModalPresentationController {
-            presetation.adjustToFullScreen()
+            presetation.changeScale(to: .adjustedOnce)
         }
     }
 }
