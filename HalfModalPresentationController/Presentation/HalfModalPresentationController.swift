@@ -66,7 +66,15 @@ class HalfModalPresentationController : UIPresentationController {
             case .normal:
                 presentedView!.frame.origin.y = endPoint.y + containerView!.frame.height / 2
             case .adjustedOnce:
-                presentedView!.frame.origin.y = endPoint.y
+                if #available(iOS 11.0, *) {
+                    if endPoint.y <= (UIApplication.shared.keyWindow?.safeAreaInsets.top)! {
+                        presentedView!.frame.origin.y = (UIApplication.shared.keyWindow?.safeAreaInsets.top)!
+                    } else {
+                        presentedView!.frame.origin.y = endPoint.y
+                    }
+                } else {
+                    presentedView!.frame.origin.y = endPoint.y
+                }
             }
             direction = velocity.y
             
