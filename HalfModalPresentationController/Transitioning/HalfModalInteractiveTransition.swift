@@ -39,7 +39,7 @@ class HalfModalInteractiveTransition: UIPercentDrivenInteractiveTransition {
         set {}
     }
     
-    func onPan(pan: UIPanGestureRecognizer) -> Void {
+    @objc func onPan(pan: UIPanGestureRecognizer) -> Void {
         let translation = pan.translation(in: pan.view?.superview)
         
         switch pan.state {
