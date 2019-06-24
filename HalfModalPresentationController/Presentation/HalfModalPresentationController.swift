@@ -28,7 +28,7 @@ class HalfModalPresentationController : UIPresentationController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: containerView!.bounds.width, height: containerView!.bounds.height))
         
         // Blur Effect
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         view.addSubview(blurEffectView)
@@ -53,7 +53,7 @@ class HalfModalPresentationController : UIPresentationController {
         presentedViewController.view.addGestureRecognizer(panGestureRecognizer)
     }
     
-    func onPan(pan: UIPanGestureRecognizer) -> Void {
+    @objc func onPan(pan: UIPanGestureRecognizer) -> Void {
         let endPoint = pan.translation(in: pan.view?.superview)
         
         switch pan.state {
