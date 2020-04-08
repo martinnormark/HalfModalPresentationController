@@ -24,6 +24,7 @@ class HalfModalTransitioningDelegate: NSObject, UIViewControllerTransitioningDel
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        interactiveDismiss = false
         return HalfModalTransitionAnimator(type: .Dismiss)
     }
     
